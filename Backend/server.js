@@ -8,6 +8,7 @@ const loginroutes=require("./Routes/loginroutes")
 const deltransroutes=require("./Routes/deltransroutes")
 const {budgetroutes}=require("./Routes/budgetroutes")
 const goalsroutes=require("./Routes/goalsroutes")
+const userinforoutes=require("./Routes/userinforoutes")
 app.use(cors())
 app.use("/api",signuproutes)
 app.use("/api",loginroutes)
@@ -15,8 +16,7 @@ app.use("/api",transctionroutes)
 app.use("/api",deltransroutes)
 app.use("/api",budgetroutes)
 app.use("/api",goalsroutes)
-
-
+app.use("/api",userinforoutes)
 
 
 app.listen(3000,()=>{
