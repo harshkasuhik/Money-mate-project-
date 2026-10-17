@@ -1,0 +1,12 @@
+ .main_login_conatiner{
+ height: 600px;
+ width: 1000px;
+ margin: 10px auto;
+ border: 2px solid black;
+ margin-top: 40px;
+ border-radius: 20px;
+}
+.user_login{
+border-radius: 20px;
+
+}
