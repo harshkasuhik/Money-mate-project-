@@ -1,5 +1,4 @@
 import About from "./components/About";
-
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { Routes, Route } from "react-router-dom";
@@ -12,6 +11,7 @@ import Budget from "./Afterlogincomp/Budget";
 import Features from "./components/Features";
 import Setting from "./Afterlogincomp/Setting";
 import Anlaysis from "./Afterlogincomp/Anlaysis";
+
 const data = localStorage.getItem("role");
 const App = () => {
   return (
@@ -33,10 +33,11 @@ const App = () => {
           <Route path="goals" element={<Goals />} />
           <Route path="profile" element={<Profile />} />
           <Route path="budget" element={<Budget />} />
-            <Route path="setting" element={<Setting/>} />
-              <Route path="anlaysis" element={<Anlaysis/>} />
+          <Route path="setting" element={<Setting/>} />
+           <Route path="anlaysis" element={<Anlaysis/>} />
+           
         </Route>
-
+  
         <Route path="/login" element={<Login />} />
       </Routes>
     </div>

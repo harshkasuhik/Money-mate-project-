@@ -88,6 +88,7 @@ console.log(result)
           width="355px"
           alt="logo.png"
         />
+        
       </div>
     </div>
   );

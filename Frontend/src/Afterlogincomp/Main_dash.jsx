@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
+import Addtransaction from "./Addtransaction"
 
 const Main_dash = () => {
     const [main, Setmain] = useState([])
-   
+   const[moretrans,Setmoretrans]=useState("")
     useEffect(() => {
         async function ains() {
             let data = await fetch("http://localhost:3000/api/transaction")
@@ -37,7 +38,13 @@ const Main_dash = () => {
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
 
-
+  {moretrans === "addtrans" && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 ml-50">
+    <div className="w-full max-w-sm">
+      <Addtransaction />
+    </div>
+  </div>
+)}
 
 
       {/* Top Header Section */}
@@ -47,7 +54,7 @@ const Main_dash = () => {
           <p className="text-sm text-gray-500 mt-1">View and manage all your transactions</p>
         </div>
 
-        <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-5 py-2.5 rounded-xl transition duration-200 shadow-sm flex items-center gap-2">
+        <button onClick={()=>{Setmoretrans("addtrans")}} className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-5 py-2.5 rounded-xl transition duration-200 shadow-sm flex items-center gap-2">
           + Add Transaction
         </button>
       </div>
@@ -114,7 +121,10 @@ const Main_dash = () => {
           </table>
         </div>
       )}
+
+ 
     </div>
+
   )
 }
 
