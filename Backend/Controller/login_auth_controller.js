@@ -16,14 +16,14 @@ msg:"user not found"
 
     })
 }
-if(!user.password==password){
-    res.json({
+if(user.password!==password){
+    return res.json({
      succ:false,
 msg:"wrong found"
    
     })
 }
-res.json({
+ return res.json({
     succ:true,
     msg:"sucess",
 user:{

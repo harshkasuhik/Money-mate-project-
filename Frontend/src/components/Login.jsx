@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../css/login.css";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 const Login = () => {
   const navi=useNavigate()
   const [userlogin, Setuserlogin] = useState({
@@ -48,6 +49,8 @@ console.log(result)
     });
   };
     return (
+      <>
+      <Navbar/>
     <div className="flex justify-around items-center gap-5 main_login_conatiner ">
       <div className="user_login flex flex-wrap  w-95 border-2 border-solid border-black gap-12 p-5 justify-around">
         <h1 className="text-3xl font-bold text-gray-800">
@@ -91,6 +94,7 @@ console.log(result)
         
       </div>
     </div>
+    </>
   );
 };
 

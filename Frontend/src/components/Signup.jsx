@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../css/signup.css";
-
-
+import Navbar from "./Navbar";
 const Signup = () => {
   
   const [usersignup, Setusersignup] = useState({
@@ -36,6 +35,9 @@ const Signup = () => {
   } 
 
   return (
+    <>
+    <Navbar/>
+  
     <div className="flex justify-around items-center gap-5 main_signup_conatiner ">
       <div className="user_Signup flex flex-wrap  w-95 border-2 border-solid border-black gap-12 p-5 justify-around">
         <h1 className="text-3xl font-bold text-gray-800">
@@ -90,7 +92,7 @@ const Signup = () => {
       {/* <Outlet/> */}
 
     </div>
- 
+    </>
 
 );
 };

@@ -1,6 +1,8 @@
+import Navbar from "./Navbar"
 
 const About = () => {
-  return (
+  return (<>
+  <Navbar/>
     <div className="mt-60 ml-100" >
      <p className="max-w-2xl text-base leading-7 text-gray-500 ">
   Moneyly is a simple and user-friendly personal finance management app
@@ -10,7 +12,7 @@ const About = () => {
   personal finance simple, organized, and easier to understand so you can
   make better decisions with your money.
 </p> 
-    </div>
+    </div></>
   )
 }
 
