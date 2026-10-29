@@ -16,7 +16,8 @@ const Addtransaction = () => {
     });
   };
   return (
-<div className="w-full max-w-sm mx-auto rounded-xl border-2  h-100 border-black p-6">
+<div className="w-full max-w-sm mx-auto rounded-xl border-2 
+    h-100 border-black p-6">
       <form className="flex flex-col gap-4">
         <input className="border border-gray-300 rounded-lg px-3 py-2"
           type="text"

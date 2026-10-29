@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express= require("express")
 const cors=require("cors")
 const app=express()
@@ -8,7 +9,11 @@ const loginroutes=require("./Routes/loginroutes")
 const deltransroutes=require("./Routes/deltransroutes")
 const {budgetroutes}=require("./Routes/budgetroutes")
 const goalsroutes=require("./Routes/goalsroutes")
-const userinforoutes=require("./Routes/userinforoutes")
+const userinforoutes=require("./Routes/userinforoutes");
+const {connectdb}=require("./config/connect")
+
+
+connectdb()
 app.use(cors())
 app.use("/api",signuproutes)
 app.use("/api",loginroutes)

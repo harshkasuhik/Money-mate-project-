@@ -8,8 +8,18 @@ const Login = () => {
     Email: "",
     Password: "",
   });
+  
+  const logindata = (e) => {
+    let key = e.target.name;
+    let value = e.target.value;
+    Setuserlogin({
+      ...userlogin,
+      [key]: value,
+    });
+  };
   const handleclick = (e) => {
     e.preventDefault();
+    loggg()
   };
 
 async function loggg() {
@@ -40,14 +50,6 @@ console.log(result)
 }
 
 
-  const logindata = (e) => {
-    let key = e.target.name;
-    let value = e.target.value;
-    Setuserlogin({
-      ...userlogin,
-      [key]: value,
-    });
-  };
     return (
       <>
       <Navbar/>
@@ -70,18 +72,19 @@ console.log(result)
           <br />
           <label className="signup_label">Password</label>
           <input
-            type="text"
+             name="Password"
+            type="password"
             value={userlogin.Password}
-            name="Password"
-            onChange={logindata}
+         onChange={logindata}
             placeholder="enter password"
             className=" border-2 border-black w-86 h-10 rounded-lg"
           />
-        </form>
-
-        <button className="text-sm font-semibold text-white bg-green-500 rounded-lg h-7 " onClick={loggg}>
+          <button type="submit" className="text-sm font-semibold text-white bg-green-500 rounded-lg h-7">
       LOGIN
         </button>
+        </form>
+
+        
       </div>
 
       <div className="pr-5">

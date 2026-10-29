@@ -8,9 +8,7 @@ const Signup = () => {
     Email: "",
     Password: "",
   });
-  const handleclick = (e) => {
-    e.preventDefault();
-  };
+ 
   const signupdata = (e) => {
     let key = e.target.name;
     let value = e.target.value;
@@ -19,6 +17,10 @@ const Signup = () => {
       [key]: value,
     });
   };
+   const handleclick = (e) => {
+    e.preventDefault();
+    user_data()
+  };
   async function user_data() {
      const data = await fetch("http://localhost:3000/api/signup", {
     method: "POST",
@@ -26,6 +28,7 @@ const Signup = () => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
+      name:usersignup.Fullname,
     email: usersignup.Email,
       password: usersignup.Password
     })
@@ -66,18 +69,20 @@ const Signup = () => {
           <br />
           <label className="signup_label">Password</label>
           <input
-            type="text"
+                 name="Password"
+            type="password"
             value={usersignup.Password}
-            name="Password"
+       
             onChange={signupdata}
             placeholder="enter password"
             className=" border-2 border-black w-86 h-10 rounded-lg"
           />
-        </form>
-
-        <button className="text-sm font-semibold text-white bg-green-500 rounded-lg h-7" onClick={user_data}>
+             <button  type="submit" className="text-sm font-semibold text-white bg-green-500 rounded-lg h-7">
           Create Account
         </button >
+        </form>
+
+     
       </div>
 
       <div className="pr-5">
