@@ -5,7 +5,7 @@ const Budget = () => {
   const[budget,Setbudget]=useState([])
   useEffect(()=>{
      async function budgetsss() {
-        let data = await fetch(`${API_BASE_URL}api/budget`)
+        let data = await fetch(`${API_BASE_URL}/api/budget`)
         let result= await data.json()
         console.log(result)
     Setbudget(result)
