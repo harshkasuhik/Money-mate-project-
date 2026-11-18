@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import Addtransaction from "./Addtransaction"
+import API_BASE_URL from "../api";
 
 const Main_dash = () => {
     const [main, Setmain] = useState([])
    const[moretrans,Setmoretrans]=useState("")
     useEffect(() => {
         async function ains() {
-            let data = await fetch("http://localhost:3000/api/transaction")
+            let data = await fetch(`${API_BASE_URL}/transaction`)
             let res = await data.json()
             console.log(res)
             Setmain(res)
@@ -18,7 +19,7 @@ const Main_dash = () => {
 // async function deleterans(id) {
 //     try {
 //       const deldata = await fetch(
-//       `http://localhost:3000/api/transaction/${id}`,
+//       `${API_BASE_URL}/transaction/${id}`,
 //         {
 //           method: "DELETE",
 //         }

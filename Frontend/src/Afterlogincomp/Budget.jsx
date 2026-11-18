@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
+import API_BASE_URL from "../api";
 
 const Budget = () => {
   const[budget,Setbudget]=useState([])
   useEffect(()=>{
      async function budgetsss() {
-        let data = await fetch("http://localhost:3000/api/budget")
+        let data = await fetch(`${API_BASE_URL}/budget`)
         let result= await data.json()
         console.log(result)
     Setbudget(result)

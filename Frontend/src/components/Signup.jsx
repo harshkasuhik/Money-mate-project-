@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../css/signup.css";
 import Navbar from "./Navbar";
+import API_BASE_URL from "../api";
 const Signup = () => {
   
   const [usersignup, Setusersignup] = useState({
@@ -22,7 +23,7 @@ const Signup = () => {
     user_data()
   };
   async function user_data() {
-     const data = await fetch("http://localhost:3000/api/signup", {
+     const data = await fetch(`${API_BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

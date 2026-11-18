@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import API_BASE_URL from "../api";
 
 const Profile = () => {
   const [profile, Setprofile] = useState([]);
   useEffect(() => {
     async function info() {
-      let data = await fetch("http://localhost:3000/api/profile");
+      let data = await fetch(`${API_BASE_URL}/profile`);
       let res = await data.json();
       Setprofile(res);
     }

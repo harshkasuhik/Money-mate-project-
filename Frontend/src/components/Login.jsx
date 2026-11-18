@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../css/login.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+import API_BASE_URL from "../api";
 const Login = () => {
   const navi=useNavigate()
   const [userlogin, Setuserlogin] = useState({
@@ -24,7 +25,7 @@ const Login = () => {
 
 async function loggg() {
   try {
-    const auth = await fetch("http://localhost:3000/api/login", {
+    const auth = await fetch(`${API_BASE_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

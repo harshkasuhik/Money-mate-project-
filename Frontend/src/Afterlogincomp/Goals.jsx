@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
+import API_BASE_URL from "../api";
 
 const Goals = () => {
   const[goals,Setgoals]=useState([])
   useEffect(()=>{
    async function goalss() {
-   let data= await fetch("http://localhost:3000/api/goals")
+   let data= await fetch(`${API_BASE_URL}/goals`)
    let res=await data.json()
   
    Setgoals(res)
