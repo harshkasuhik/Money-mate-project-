@@ -5,7 +5,7 @@ const Profile = () => {
   const [profile, Setprofile] = useState([]);
   useEffect(() => {
     async function info() {
-      let data = await fetch(`${API_BASE_URL}/profile`);
+      let data = await fetch(`${API_BASE_URL}/api/profile`);
       let res = await data.json();
       Setprofile(res);
     }

@@ -5,7 +5,7 @@ const Goals = () => {
   const[goals,Setgoals]=useState([])
   useEffect(()=>{
    async function goalss() {
-   let data= await fetch(`${API_BASE_URL}/goals`)
+   let data= await fetch(`${API_BASE_URL}/api/goals`)
    let res=await data.json()
   
    Setgoals(res)

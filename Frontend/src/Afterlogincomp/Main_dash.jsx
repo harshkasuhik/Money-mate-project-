@@ -7,7 +7,7 @@ const Main_dash = () => {
    const[moretrans,Setmoretrans]=useState("")
     useEffect(() => {
         async function ains() {
-            let data = await fetch(`${API_BASE_URL}/transaction`)
+            let data = await fetch(`${API_BASE_URL}/api/transaction`)
             let res = await data.json()
             console.log(res)
             Setmain(res)
