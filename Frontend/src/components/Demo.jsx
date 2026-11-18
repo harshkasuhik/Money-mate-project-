@@ -52,7 +52,7 @@ const Demo = () => {
       <div className="demo_img flex justify-center items-center w-full md:w-auto">
         <div className="p-2 bg-white rounded-2xl border-2 border-gray-200 shadow-lg">
           <img
-            src="../images/demo_img.png"
+            src="../public/demo_img.png"
             alt="Money Mate Dashboard Preview"
             className="w-full max-w-[450px] h-auto object-contain rounded-xl"
           />

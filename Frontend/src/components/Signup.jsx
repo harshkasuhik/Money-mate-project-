@@ -88,7 +88,7 @@ const Signup = () => {
 
       <div className="pr-5">
         <img
-          src="../images/logo.png"
+          src="../public/logo.png"
           height="555px"
           width="355px"
           alt="logo.png"
