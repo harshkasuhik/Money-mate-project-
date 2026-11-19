@@ -8,13 +8,16 @@ import Setting from "./Setting";
 import Budget from "./Budget";
 import { Outlet } from "react-router-dom";
 import Ai from "./Ai";
+import { useNavigate } from "react-router-dom";
+
 const Dashbaord_afteruserauth = () => {
+  const nav =useNavigate()
   const [active, Setactive] = useState("dashboard");
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
       <div className="w-64 bg-[#0F172A] text-slate-300 flex flex-col justify-between shrink-0">
         <div>
-          <div className="h-20 px-6 flex items-center text-2xl font-extrabold text-white tracking-wide border-b border-slate-800">
+          <div className="h-20 px-6 flex items-center text-2xl font-extrabold text-white tracking-wide border-b border-slate-800 cursor-pointer" onClick={() => nav("/")}>
             MONEY-MATE
           </div>
 
