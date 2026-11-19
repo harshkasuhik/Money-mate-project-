@@ -59,9 +59,13 @@ return res.status(200).json({
     msg:"successfully login the account"
 })
     } catch (error) {
-        console.log(error)
-        res.send("oops error occur we are working on it ")
-    }
+    console.log(error);
+
+    return res.status(500).json({
+        succ: false,
+        msg: "Something went wrong"
+    });
+}
    
 }
 module.exports=login

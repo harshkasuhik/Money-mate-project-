@@ -12,7 +12,6 @@ import Features from "./components/Features";
 import Setting from "./Afterlogincomp/Setting";
 import Anlaysis from "./Afterlogincomp/Anlaysis";
 
-const data = localStorage.getItem("role");
 const App = () => {
   return (
     <div>
@@ -25,7 +24,7 @@ const App = () => {
         <Route
           path="/dashboard"
           element={
-            <ProtectesRoutes role={data} acess={"user"}>
+            <ProtectesRoutes acess={"user"}>
               <Dashbaord_afteruserauth />
             </ProtectesRoutes>
           }

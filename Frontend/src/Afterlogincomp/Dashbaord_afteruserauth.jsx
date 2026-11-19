@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../css/Dashboard.css";
+import DashboardHome from "./DashboardHome";
 import Anlaysis from "./Anlaysis";
 import Goals from "./Goals";
 import Main_dash from "./Main_dash";
@@ -81,7 +82,7 @@ const Dashbaord_afteruserauth = () => {
       </div>
 
       <div className="flex-1 overflow-y-auto bg-gray-50">
-        {active === "dashboard" && <Main_dash />}
+        {active === "dashboard" && <DashboardHome onNavigate={Setactive} />}
         {active === "goals" && <Goals />}
         {active === "transaction" && <Main_dash />}
         {active === "budget" && <Budget />}

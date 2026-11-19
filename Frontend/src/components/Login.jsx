@@ -3,101 +3,117 @@ import "../css/login.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import API_BASE_URL from "../api";
+
 const Login = () => {
-  const navi=useNavigate()
+  const navi = useNavigate();
+
+  const [loginError, setLoginError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const [userlogin, Setuserlogin] = useState({
     Email: "",
     Password: "",
   });
-  
+
   const logindata = (e) => {
-    let key = e.target.name;
-    let value = e.target.value;
-    Setuserlogin({
-      ...userlogin,
-      [key]: value,
-    });
+    const { name, value } = e.target;
+
+    Setuserlogin((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
-  const handleclick = (e) => {
+
+  const handleclick = async (e) => {
     e.preventDefault();
-    loggg()
+    setLoginError("");
+
+    try {
+      setLoading(true);
+
+      const auth = await fetch(`${API_BASE_URL}/api/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: userlogin.Email.trim(),
+          password: userlogin.Password,
+        }),
+      });
+
+      const result = await auth.json();
+
+      if (!auth.ok || !result.succ) {
+        setLoginError(result.msg || "Login failed");
+        return;
+      }
+
+      localStorage.setItem("role", "user");
+      localStorage.setItem("userEmail", userlogin.Email.trim());
+
+      navi("/dashboard");
+    } catch (error) {
+      console.log(error);
+      setLoginError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-async function loggg() {
-  try {
-    const auth = await fetch(`${API_BASE_URL}/api/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: userlogin.Email,
-        password: userlogin.Password,
-      }),
-    });
+  return (
+    <>
+      <Navbar />
 
-    const result = await auth.json();
-console.log(result)
-    if (result.succ) {
-      console.log("Login successful");
-      localStorage.setItem("role", "user");
-      navi("/dashboard");
-    } else {
-      console.log(result.msg);
-    }
-  } catch (error) {
-    console.log("Login failed:", error);
-  }
-}
+      <div className="flex justify-around items-center gap-5 main_login_conatiner">
+        <div className="user_login flex flex-wrap w-95 border-2 border-solid border-black gap-12 p-5 justify-around">
+          <h1 className="text-3xl font-bold text-gray-800">
+            Start your financial journey
+          </h1>
 
+          <form onSubmit={handleclick} className="flex flex-col gap-2">
+            <label className="signup_label">Email</label>
+            <input
+              type="email"
+              value={userlogin.Email}
+              name="Email"
+              onChange={logindata}
+              placeholder="Enter email"
+              autoComplete="email"
+              required
+              className="border-2 border-black w-86 h-10 rounded-lg"
+            />
 
-    return (
-      <>
-      <Navbar/>
-    <div className="flex justify-around items-center gap-5 main_login_conatiner ">
-      <div className="user_login flex flex-wrap  w-95 border-2 border-solid border-black gap-12 p-5 justify-around">
-        <h1 className="text-3xl font-bold text-gray-800">
-          Start your financial journey
-        </h1>
-        <form onSubmit={handleclick} className="flex flex-col gap-2">
-          
-          <label className="signup_label">Email</label>
-          <input
-            type="Email"
-            value={userlogin.Email}
-            name="Email"
-            onChange={logindata}
-            placeholder="enter email"
-            className=" border-2 border-black w-86 h-10 rounded-lg"
-          />
-          <br />
-          <label className="signup_label">Password</label>
-          <input
-             name="Password"
-            type="password"
-            value={userlogin.Password}
-         onChange={logindata}
-            placeholder="enter password"
-            className=" border-2 border-black w-86 h-10 rounded-lg"
-          />
-          <button type="submit" className="text-sm font-semibold text-white bg-green-500 rounded-lg h-7">
-      LOGIN
-        </button>
-        </form>
+            <label className="signup_label">Password</label>
+            <input
+              name="Password"
+              type="password"
+              value={userlogin.Password}
+              onChange={logindata}
+              placeholder="Enter password"
+              autoComplete="current-password"
+              required
+              className="border-2 border-black w-86 h-10 rounded-lg"
+            />
 
-        
+            {loginError && (
+              <p className="text-sm text-red-600">{loginError}</p>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="text-sm font-semibold text-white bg-green-500 rounded-lg h-8 disabled:opacity-50"
+            >
+              {loading ? "Logging in..." : "LOGIN"}
+            </button>
+          </form>
+        </div>
+
+        <div className="pr-5">
+          <img src="/logo.png" height="555" width="355" alt="Logo" />
+        </div>
       </div>
-
-      <div className="pr-5">
-        <img
-          src="../public/logo.png"
-          height="555px"
-          width="355px"
-          alt="logo.png"
-        />
-        
-      </div>
-    </div>
     </>
   );
 };
